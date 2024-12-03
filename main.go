@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/zhang121923/rpc-proto-registry/app"
-	user "github.com/zhang121923/rpc-proto-registry/protos/go"
+	proto "github.com/zhang121923/rpc-proto-registry/protos/go"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -16,7 +16,8 @@ func main() {
 	}
 
 	s := grpc.NewServer()
-	user.RegisterCreateUserServer(s, &app.UserServer{})
+	proto.RegisterCreateUserServer(s, &app.UserServer{})
+	proto.RegisterStudentServiceServer(s, &app.StudentServer{})
 
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)

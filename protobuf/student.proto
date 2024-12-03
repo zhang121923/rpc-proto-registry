@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package protos;
+
+option go_package = "protos/go";
+
+import "google/protobuf/empty.proto";
+
+message Student {
+  string name = 1;
+  int32 age = 2;
+  string schoolName = 3;
+  int32 level = 4;
+}
+
+message School {
+  string name = 1;
+}
+
+service StudentService {
+  rpc JoinSchool (Student) returns (google.protobuf.Empty) {}
+}
